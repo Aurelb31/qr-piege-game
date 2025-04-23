@@ -56,7 +56,7 @@
       <input type="hidden" name="_captcha" value="false">
 
       <!-- Redirection après soumission -->
-      <input type="hidden" name="_next" value="https://aurelb31.github.io/merci.html/">
+      <input type="hidden" name="_next" value="https://aurelb31.github.io/merci.html">
       
       <button type="submit">Valider</button>
     </form>
