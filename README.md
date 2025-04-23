@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Connexion sécurisée</title>
   <style>
     body {
@@ -23,27 +23,21 @@
       max-width: 400px;
       width: 100%;
     }
-    input {
+    input, button {
       display: block;
       width: 100%;
-      padding: 0.6rem;
       margin: 10px 0;
+      padding: 0.8rem;
       border-radius: 8px;
       border: 1px solid #ccc;
+      font-size: 1rem;
     }
     button {
-      padding: 0.7rem 1.5rem;
-      background: #007BFF;
+      background-color: #007BFF;
       color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
       font-weight: bold;
-    }
-    .message {
-      margin-top: 20px;
-      font-size: 1rem;
-      color: #e63946;
+      border: none;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -51,32 +45,21 @@
   <div class="card">
     <h2>Connexion requise</h2>
     <p>Merci d'entrer votre nom pour continuer.</p>
-    <form id="trapForm">
-      <input type="text" id="prenom" placeholder="Prénom" required>
-      <input type="text" id="nom" placeholder="Nom" required>
+    <form action="https://formsubmit.co/abuitoni@exeisconseil.com" method="POST">
+      <input type="text" name="prenom" placeholder="Prénom" required>
+      <input type="text" name="nom" placeholder="Nom" required>
+
+      <!-- Anti-spam invisible -->
+      <input type="text" name="_honey" style="display:none">
+      
+      <!-- Pas de captcha -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Redirection après soumission -->
+      <input type="hidden" name="_next" value="https://aurelb31.github.io/qr-piege-game/merci.html">
+      
       <button type="submit">Valider</button>
     </form>
-    <div id="result" class="message"></div>
   </div>
-
-  <script>
-    const form = document.getElementById('trapForm');
-    const result = document.getElementById('result');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const prenom = document.getElementById('prenom').value;
-      const nom = document.getElementById('nom').value;
-
-      form.style.display = 'none';
-      result.innerHTML = `
-        👀 Merci ${prenom} ${nom}...<br><br>
-        🎣 Tu viens de tomber dans un piège !<br><br>
-        ⚠️ Les QR codes sauvages peuvent être des pièges à données personnelles.<br>
-        La prochaine fois, méfie-toi ! 😅<br><br>
-        <em>(Mais t'inquiète, celui-ci était juste pour le fun... ou presque 👻)</em>
-      `;
-    });
-  </script>
 </body>
 </html>
